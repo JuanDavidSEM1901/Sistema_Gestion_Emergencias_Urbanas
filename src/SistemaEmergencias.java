@@ -26,6 +26,7 @@ public class SistemaEmergencias {
                 case 1:
                     System.out.println("Ingrese el tipo de emergencia: Incendio, Accidente Vehicular o Robo");
                     String tipo = entry.nextLine();
+                    
                     System.out.println("Ingrese la ubicación de la emergencia: ");
                     String ubicacion = entry.nextLine();
                     System.out.println("Ingrese el nivel de gravedad de la emergencia de 1 a 10: ");

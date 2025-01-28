@@ -5,8 +5,8 @@ public class PrioridadPorCercania implements StrategyPrioridad{
 
     @Override
     public Emergencia seleccionarEmergencia(List<Emergencia> emergencias) {
-        //pendiente por documentar
-        return emergencias.stream().sorted(Comparator.comparingInt(Emergencia::getTiempoRespuesta).reversed()).findFirst().orElse(null);
+        // retornar la emergencia con menor tiempo de respuesta
+        return emergencias.stream().min(Comparator.comparingInt(Emergencia::getTiempoRespuesta)).orElse(null);
     }
 
 }
