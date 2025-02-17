@@ -1,14 +1,17 @@
 public class EmergenciaFactory {
     public static Emergencia crearEmergencia(String tipo, String ubicacion, int nivelGravedad, int tiempoRespuesta) {
-        switch (tipo) {
-            case "Incendio", "incendio":
+
+        String tipoEmergencia = tipo.trim().toUpperCase();
+
+        switch (tipoEmergencia) {
+            case "INCENDIO":
                 return new Incendio(ubicacion, nivelGravedad, tiempoRespuesta);
-            case "Accidente Vehicular", "accidente vehicular":
+            case "ACCIDENTE VEHICULAR":
                 return new accidenteVehicular(ubicacion, nivelGravedad, tiempoRespuesta);
-            case "Robo", "robo":
+            case "ROBO":
                 return new Robo(ubicacion, nivelGravedad, tiempoRespuesta);
             default:
-                throw new IllegalArgumentException("Tipo de emergencia no válido");    
+                throw new IllegalArgumentException("Tipo de emergencia no válido");
         }
     }
 }

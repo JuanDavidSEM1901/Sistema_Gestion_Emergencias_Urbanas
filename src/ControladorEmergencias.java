@@ -11,8 +11,8 @@ public class ControladorEmergencias {
     private int tiempoTotalRespuesta;
     private StrategyPrioridad strategyPrioridad;
     private List<Observador> observadores;
-    
-    private ControladorEmergencias(){
+
+    private ControladorEmergencias() {
 
         listaEmergencias = new ArrayList<>();
         recursosDisponibles = new HashMap<>();
@@ -27,10 +27,10 @@ public class ControladorEmergencias {
 
     }
 
-    public static ControladorEmergencias getInstance(){
+    public static ControladorEmergencias getInstance() {
         if (instance == null) {
-            instance= new ControladorEmergencias();
-        } 
+            instance = new ControladorEmergencias();
+        }
         return instance;
     }
 
@@ -40,7 +40,7 @@ public class ControladorEmergencias {
         notificarObservadores(emergencia);
     }
 
-    public void mostrarEmergencias(){
+    public void mostrarEmergencias() {
         for (Emergencia emergencia : listaEmergencias) {
             emergencia.mostrarDetalles();
         }
@@ -52,7 +52,7 @@ public class ControladorEmergencias {
         }
     }
 
-    public void atenderEmergencia(){
+    public void atenderEmergencia() {
         if (listaEmergencias.isEmpty()) {
             System.out.println("No hay emergencias pendientes.");
             return;
@@ -76,32 +76,27 @@ public class ControladorEmergencias {
         recursosDisponibles.put("Gasolina", recursosDisponibles.get("Gasolina") - 10);
     }
 
-    public void mostrarEstadisticas(){
+    public void mostrarEstadisticas() {
         System.out.println("[ESTADISTICAS DEL SISTEMA]");
         System.out.println("Emergencias atendidas: " + emergenciasAtendidas);
-        System.out.println("Tiempo promedio de respuesta: " + (emergenciasAtendidas > 0 ? tiempoTotalRespuesta / emergenciasAtendidas : 0) + " minutos");
+        System.out.println("Tiempo promedio de respuesta: "
+                + (emergenciasAtendidas > 0 ? tiempoTotalRespuesta / emergenciasAtendidas : 0) + " minutos");
         System.out.println("Recursos restantes: ");
         mostrarRecursosDisponibles();
     }
 
-    public void cambiarEstrategia(StrategyPrioridad newStrategyPrioridad){
+    public void cambiarEstrategia(StrategyPrioridad newStrategyPrioridad) {
         this.strategyPrioridad = newStrategyPrioridad;
     }
 
-    public void agregarObservador(Observador observador){
+    public void agregarObservador(Observador observador) {
         observadores.add(observador);
     }
 
-    private void notificarObservadores(Emergencia emergencia){
+    private void notificarObservadores(Emergencia emergencia) {
         for (Observador observador : observadores) {
             observador.notificarEmergencia(emergencia);
         }
     }
 
-
-
-    
-
-    
-
-}   
+}
